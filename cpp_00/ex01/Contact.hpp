@@ -11,8 +11,8 @@ class Contact{
 		std::string	phone_number;
 		std::string darckest_secret;
 
-		int set_members();
-
+		int		set_members();
+		void	display();
 };
 
 #endif

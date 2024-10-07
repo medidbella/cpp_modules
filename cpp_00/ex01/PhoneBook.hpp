@@ -8,10 +8,9 @@ class PhoneBook{
 	private:
 		int oldest;
 		int count;
+		Contact memory[8];
 
 	public:
-		Contact memory[3];
-
 		PhoneBook();
 		void add_contact();
 		void search();
