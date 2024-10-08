@@ -1,7 +1,5 @@
 #include "PhoneBook.hpp"
-#include <string>
 #include <cstdlib>
-#include <sstream>
 
 PhoneBook::PhoneBook(void){count = 0, oldest = 0;}
 
@@ -61,13 +59,13 @@ int format_check(std::string input)
 	}
 	for (int i = 0; i < size; i++){
 		if (!std::isdigit(input[i])){
-			std::cerr << "error: index should be a digit\n";
+			std::cerr << "error: index must be a digit\n";
 			return (0);
 		}
 	}
 	for (j = 0; j < size && input[j] == '0';)
 		j++;
-	for (true_lenght = 0; j < size; j++ ,true_lenght++){
+	for (true_lenght = 0; j < size; j++, true_lenght++){
 		if (true_lenght > 1){
 			std::cerr << "error: Index is out of range\n";
 			return (0);
@@ -93,7 +91,8 @@ void PhoneBook::search(void)
 	}
 	std::string input;
 	std::cout << "chose a contact index to display: ";
-	if (!std::getline(std::cin, input)){
+	std::getline(std::cin, input);
+	if (std::cin.eof()){
 		std::cout << "\nEOF detected, exiting\n";
 		exit(1);
 	}

@@ -1,7 +1,4 @@
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <cstdlib>
 
 int main(void)
 {
@@ -13,7 +10,8 @@ int main(void)
 	while (1)
 	{
 		std::cout << "\ncommand : ";
-		if (!std::getline(std::cin, input)){
+		std::getline(std::cin, input);
+		if (std::cin.eof()){
 			std::cout << "\nEOF detected, exiting\n";
 			return (1);
 		}

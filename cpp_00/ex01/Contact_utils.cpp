@@ -13,7 +13,9 @@ int is_all_space(std::string str)
 int read_and_cheack(std::string &msg, std::string &temp)
 {
 	std::cout << msg;
-	if (!std::getline(std::cin, temp)){
+	
+	std::getline(std::cin, temp);
+	if (std::cin.eof()){
 		std::cout << "\nEOF detected, exiting\n";
 		exit(1);
 	}
@@ -29,8 +31,15 @@ int	Contact::set_members(void)
 						"phone number : ", "darckest secret : "};
 
 	std::cout << "\nEnter the new contact informations \n\n";
-	for (int i = 0; i < 5; i++){
-		if (read_and_cheack(msgs[i], temp[i])){
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << msgs[i];
+		std::getline(std::cin, temp[i]);
+		if (std::cin.eof()){
+			std::cout << "\nEOF detected, exiting\n";
+			exit(1);
+		}
+		if (temp[i].empty() || is_all_space(temp[i])){
 			std::cerr << "\nerror: contacts can't have an empty field\n";
 			return (1);
 		}
@@ -46,9 +55,9 @@ int	Contact::set_members(void)
 
 void Contact::display(void)
 {
-	std::cout << "first_name = " << first_name << std::endl;
-	std::cout << "last_name = " << last_name << std::endl;
-	std::cout << "nickname = " << nickname << std::endl;
-	std::cout << "phone_number = " << phone_number << std::endl;
-	std::cout << "darckest_secret = " << darckest_secret << std::endl;
+	std::cout << "first_name = " << first_name  + "\n";
+	std::cout << "last_name = " << last_name  + "\n";
+	std::cout << "nickname = " << nickname  + "\n";
+	std::cout << "phone_number = " << phone_number  + "\n";
+	std::cout << "darckest_secret = " << darckest_secret  + "\n";
 }

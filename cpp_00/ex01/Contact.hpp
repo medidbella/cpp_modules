@@ -1,8 +1,7 @@
-#ifndef CONTACTS_HPP
-#define CONTACTS_HPP
-
-#include <string>
+#pragma once
 #include <iostream>
+#include <string>
+
 class Contact{
 	public:
 		std::string first_name;
@@ -15,4 +14,3 @@ class Contact{
 		void	display();
 };
 
-#endif

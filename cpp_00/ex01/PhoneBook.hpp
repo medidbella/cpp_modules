@@ -1,8 +1,5 @@
-# ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-
+#pragma once
 #include "Contact.hpp"
-#include <iostream>
 
 class PhoneBook{
 	private:
@@ -15,5 +12,3 @@ class PhoneBook{
 		void add_contact();
 		void search();
 };
-
-#endif
