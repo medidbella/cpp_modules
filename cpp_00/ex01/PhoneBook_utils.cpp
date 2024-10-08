@@ -29,24 +29,6 @@ void print_frame(void)
 	std::cout << "|__________|__________|__________|__________|\n";
 }
 
-void printer(std::string text)
-{
-	int size = text.size();
-	int index = 0;
-	int spaces = 10 - size;
-
-	std::cout << "|";
-	while (spaces-- > 0)
-		std::cout << ' ';
-	while (index < 9 && index < size)
-		std::cout << text[index++];
-	if (size > 10)
-		std::cout << '.';
-	else if (size == 10)
-		std::cout << text[9];
-	return ;
-}
-
 int format_check(std::string input)
 {
 	int j;
@@ -73,13 +55,7 @@ void PhoneBook::search(void)
 	}
 	print_frame();
 	for (int i = 0; i < count; i++)
-	{
-		std::cout << "|         " << (i + 1);
-		printer(memory[i].first_name);
-		printer(memory[i].last_name);
-		printer(memory[i].nickname);
-		std::cout << "|\n---------------------------------------------\n";
-	}
+		memory[i].print_row(i);
 	std::string input;
 	std::cout << "chose a contact index to display: ";
 	std::getline(std::cin, input);

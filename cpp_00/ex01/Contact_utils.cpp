@@ -5,9 +5,9 @@
 int is_all_space(std::string str)
 {
 	for (int i = 0; str[i]; i++)
-		if (isspace(str[i]))
-			return (1);
-	return (0);
+		if (!isspace(str[i]))
+			return (0);
+	return (1);
 }
 
 int read_and_cheack(std::string &msg, std::string &temp)
@@ -22,6 +22,24 @@ int read_and_cheack(std::string &msg, std::string &temp)
 	if (temp.empty() || is_all_space(temp))
 		return (1);
 	return (0);
+}
+
+void printer(std::string text)
+{
+	int size = text.size();
+	int index = 0;
+	int spaces = 10 - size;
+
+	std::cout << "|";
+	while (spaces-- > 0)
+		std::cout << ' ';
+	while (index < 9 && index < size)
+		std::cout << text[index++];
+	if (size > 10)
+		std::cout << '.';
+	else if (size == 10)
+		std::cout << text[9];
+	return ;
 }
 
 int	Contact::set_members(void)
@@ -58,4 +76,13 @@ void Contact::display(void)
 	std::cout << "nickname = " << nickname  + "\n";
 	std::cout << "phone_number = " << phone_number  + "\n";
 	std::cout << "darckest_secret = " << darckest_secret  + "\n";
+}
+
+void Contact::print_row(int i)
+{
+	std::cout << "|         " << (i + 1);
+	printer(first_name);
+	printer(last_name);
+	printer(nickname);
+	std::cout << "|\n---------------------------------------------\n";
 }
