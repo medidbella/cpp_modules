@@ -39,10 +39,8 @@ int	Contact::set_members(void)
 			std::cout << "\nEOF detected, exiting\n";
 			exit(1);
 		}
-		if (temp[i].empty() || is_all_space(temp[i])){
-			std::cerr << "\nerror: contacts can't have an empty field\n";
-			return (1);
-		}
+		if (temp[i].empty() || is_all_space(temp[i]))
+			return(std::cerr << "\nerror: contacts can't have an empty field\n", 1);
 	}
 	first_name = temp[0];
 	last_name = temp[1];

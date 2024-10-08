@@ -11,12 +11,10 @@ int main(void)
 	{
 		std::cout << "\ncommand : ";
 		std::getline(std::cin, input);
-		if (std::cin.eof()){
-			std::cout << "\nEOF detected, exiting\n";
-			return (1);
-		}
+		if (std::cin.eof())
+			return (std::cout << "\nEOF detected, exiting\n", 1);
 		if (input == "EXIT")
-			return (0);
+			return (std::cout << "exiting \n", 0);
 		else if (input == "ADD")
 			Awesome_phoneBook.add_contact();
 		else if (input == "SEARCH")

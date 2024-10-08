@@ -51,26 +51,17 @@ int format_check(std::string input)
 {
 	int j;
 	int size = input.size();
-	int true_lenght;
 
-	if (input.empty()){
-		std::cerr << "error: no input\n";
-		return (0);
-	}
+	if (input.empty())
+		return (std::cerr << "error: no input\n", 0);
 	for (int i = 0; i < size; i++){
-		if (!std::isdigit(input[i])){
-			std::cerr << "error: index must be a digit\n";
-			return (0);
-		}
+		if (!std::isdigit(input[i]))
+			return (std::cerr << "error: index must be a digit\n", 0);
 	}
 	for (j = 0; j < size && input[j] == '0';)
 		j++;
-	for (true_lenght = 0; j < size; j++, true_lenght++){
-		if (true_lenght > 1){
-			std::cerr << "error: Index is out of range\n";
-			return (0);
-		}
-	}
+	if (j < size - 1)
+		return (std::cerr << "error: Index is out of range\n", 0);
 	return (1);
 }
 
