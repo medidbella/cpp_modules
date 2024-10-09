@@ -26,19 +26,11 @@ int read_and_cheack(std::string &msg, std::string &temp)
 
 void printer(std::string text)
 {
-	int size = text.size();
-	int index = 0;
-	int spaces = 10 - size;
-
-	std::cout << "|";
-	while (spaces-- > 0)
-		std::cout << ' ';
-	while (index < 9 && index < size)
-		std::cout << text[index++];
-	if (size > 10)
-		std::cout << '.';
-	else if (size == 10)
-		std::cout << text[9];
+	std::cout << '|';
+	if (text.size() > 10)
+		text = text.substr(0, 9) + ".";
+	std::cout << std::setfill(' ') << std::setw(10);
+	std::cout << text;
 	return ;
 }
 
