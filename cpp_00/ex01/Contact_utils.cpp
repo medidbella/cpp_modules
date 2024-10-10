@@ -55,7 +55,7 @@ int	Contact::set_members(void)
 	first_name = temp[0];
 	last_name = temp[1];
 	nickname = temp[2];
-	phone_number = temp[2];
+	phone_number = temp[3];
 	darckest_secret = temp[4];
 	std::cout << "new contact added !\n";
 	return (0);
