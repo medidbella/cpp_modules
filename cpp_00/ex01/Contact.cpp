@@ -1,5 +1,5 @@
 #include "Contact.hpp"
-#include <cctype>
+#include <iomanip>
 #include <cstdlib>
 
 int is_all_space(std::string str)
@@ -10,7 +10,7 @@ int is_all_space(std::string str)
 	return (1);
 }
 
-int read_and_cheack(std::string &msg, std::string &temp)
+int read_and_check(std::string &msg, std::string &temp)
 {
 	std::cout << msg;
 	

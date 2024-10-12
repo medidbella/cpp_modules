@@ -5,12 +5,12 @@ PhoneBook::PhoneBook(void){count = 0, oldest = 0;}
 
 void	PhoneBook::add_contact(void)
 {
-	if (oldest < 8)
+	if (oldest < SIZE)
 	{
 		if (memory[oldest].set_members())
 			return ;
 		oldest++;
-		if (count < 8)
+		if (count < SIZE)
 			count++;
 	}
 	else
@@ -67,7 +67,7 @@ void PhoneBook::search(void)
 		return ;
 	int index = std::atoi(input.c_str());
 	if (index == 0){
-		std::cerr << "error: Index must be greater that 0\n";
+		std::cerr << "error: Index must be greater than 0\n";
 		return ;
 	}
 	if (index > count){

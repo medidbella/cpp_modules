@@ -1,11 +1,12 @@
 #pragma once
 #include "Contact.hpp"
+#define SIZE 8
 
 class PhoneBook{
 	private:
 		int oldest;
 		int count;
-		Contact memory[8];
+		Contact memory[SIZE];
 
 	public:
 		PhoneBook();
