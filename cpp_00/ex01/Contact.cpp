@@ -29,7 +29,7 @@ void printer(std::string text)
 	std::cout << '|';
 	if (text.size() > 10)
 		text = text.substr(0, 9) + ".";
-	std::cout << std::setfill(' ') << std::setw(10);
+	std::cout << std::setw(10);
 	std::cout << text;
 	return ;
 }

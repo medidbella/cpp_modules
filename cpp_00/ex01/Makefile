@@ -1,4 +1,4 @@
-FILES = main.cpp PhoneBook_utils.cpp Contact_utils.cpp
+FILES = $(shell ls | grep .cpp)
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 

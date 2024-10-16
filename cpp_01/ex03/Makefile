@@ -1,19 +1,21 @@
 FILES = $(shell ls | grep .cpp)
+PROG = Unnecessary_violence
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 
-megaphone: $(OBJ_FILES)
-	c++ $(FLAGS) $(OBJ_FILES) -o megaphone
+$(PROG): $(OBJ_FILES)
+	c++ $(FLAGS) $(OBJ_FILES) -o $(PROG)
 
 $(OBJ_FILES): $(FILES)
 	c++ $(FLAGS) -c $(FILES)
 
 clean:
-	rm -f megaphone.o
+	rm -f $(OBJ_FILES)
 
 fclean: clean
-	rm -f megaphone
+	rm -f $(PROG)
 
-all: megaphone
+all: $(PROG)
 
 re: fclean all
+
