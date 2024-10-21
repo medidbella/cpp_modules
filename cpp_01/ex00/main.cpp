@@ -5,7 +5,7 @@ int main()
     Zombie *ptr = newZombie("heap zombie");
     if (!ptr)
         return (1);
-    randomChump("stack zombie");
     ptr->announce();
+    randomChump("stack zombie");
     delete ptr;
 }
