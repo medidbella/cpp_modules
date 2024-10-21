@@ -2,12 +2,7 @@
 
 Zombie* newZombie(std::string name)
 {
-	try {
-		Zombie *res = new Zombie;
-		res->set_name(name);
-		return (res);
-	}
-	catch (const std::bad_alloc& e){
-		return NULL;
-	}
+	Zombie *res = new (std::nothrow) Zombie;
+	res->set_name(name);
+	return (res);
 }

@@ -8,10 +8,9 @@ int main()
     std::string *stringPTR = &brain;
     std::string& stringREF = brain;
 
-//  memeory addresses 
     std::cout << stringPTR << '\n';
     std::cout << &stringREF << '\n';
-// values
+
     std::cout << *stringPTR << '\n';
     std::cout << stringREF << '\n';
 }
