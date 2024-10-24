@@ -2,7 +2,6 @@
 
 void randomChump( std::string name )
 {
-    Zombie brain_eater;
-    brain_eater.set_name(name);
+    Zombie brain_eater(name);
     brain_eater.announce();
 }

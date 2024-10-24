@@ -1,6 +1,6 @@
 FILES = $(shell ls | grep .cpp)
 PROG = harlFilter
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 
 $(PROG): $(OBJ_FILES)

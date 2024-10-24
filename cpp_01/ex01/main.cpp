@@ -2,8 +2,8 @@
 
 int main()
 {
-    int size = 4;
-    Zombie *hord = zombieHorde(size, "hord_member");
+    int size = 13;
+    Zombie *hord = zombieHorde(13, "hord_member");
     if (!hord)
         return (1);
     for (int iter = 0; iter < size; iter++)

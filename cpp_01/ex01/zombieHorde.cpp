@@ -2,10 +2,11 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-    Zombie* zombies = new (std::nothrow) Zombie[N];
-    if (!zombies)
+    if (N < 1)
         return (NULL);
-    for (int iter = 0; iter < N; iter++)
-            zombies[iter].set_name(name);
-        return (zombies);
+    Zombie* zombies = new (std::nothrow) Zombie[N];
+    for (int i = 0; i < N; i++){
+        zombies[i].set_name(name);
+    }
+    return (zombies);
 }
