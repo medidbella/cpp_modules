@@ -8,9 +8,11 @@ int main()
     std::string *stringPTR = &brain;
     std::string& stringREF = brain;
 
+    std::cout << &brain << '\n';
     std::cout << stringPTR << '\n';
     std::cout << &stringREF << '\n';
 
+    std::cout << brain << '\n';
     std::cout << *stringPTR << '\n';
     std::cout << stringREF << '\n';
 }

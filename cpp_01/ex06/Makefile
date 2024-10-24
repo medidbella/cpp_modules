@@ -18,4 +18,3 @@ fclean: clean
 all: $(PROG)
 
 re: fclean all
-
