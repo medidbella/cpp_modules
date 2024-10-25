@@ -1,10 +1,12 @@
 #include "include.hpp"
 
-int replacer(std::string line, size_t len, char *old_str, char *new_str)
+int replacer(std::string &line, size_t len, char *old_str, char *new_str)
 {
-	int occur_idx = line.find(old_str);
+	static int occur_idx;
+
+	occur_idx = line.find(old_str, occur_idx);
 	if (occur_idx == -1)
-		return (0);
+		return (occur_idx = 0, 0);
 	line.erase(occur_idx, len);
 	line.insert(occur_idx, new_str);
 	return (1);
