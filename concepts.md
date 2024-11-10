@@ -4,5 +4,5 @@
 
 =>MODULE 01:
 	
-	Memory allocation for objects, pointers to member function, references, switch statement, destructors
+	Memory allocation for objects, pointers to member function, references, switch statement, class destructors
 	file handling
