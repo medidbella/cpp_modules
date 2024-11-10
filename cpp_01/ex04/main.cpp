@@ -22,11 +22,17 @@ int main(int ac, char **av)
 	std::string out_file = std::string(av[1]) + ".replace";
 	std::string line;
 	std::ifstream in_stream(av[1]);
-	std::ofstream out_stream(out_file.c_str());
 	if (!in_stream.is_open())
+	{
 		std::cerr << "can't open " << av[1] << '\n';
-	else if (!out_stream.is_open())
+		return 1;
+	}
+	std::ofstream out_stream(out_file.c_str());
+	if (!out_stream.is_open())
+	{
 		std::cerr << "can't open the output file \n";
+		return 1;
+	}
 	while (std::getline(in_stream, line))
 	{
 		while (replacer(line, len, av[2], av[3])){}

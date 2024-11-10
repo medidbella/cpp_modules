@@ -18,15 +18,22 @@ int main(int ac, char **av)
     switch (complain_index)
     {
         case 0:
+            std::cout << "[ "<< complain_levels[0] << " ]" << '\n';
+            harl_obj.complain(complain_levels[0]);
+            std::cout << '\n';
         case 1:
+            std::cout << "[ "<< complain_levels[1] << " ]" << '\n';
+            harl_obj.complain(complain_levels[1]);
+            std::cout << '\n';
         case 2:
+            std::cout << "[ "<< complain_levels[2] << " ]" << '\n';
+            harl_obj.complain(complain_levels[2]);
+            std::cout << '\n';
         case 3:
-            for (;complain_index < 4; complain_index++){
-                std::cout << "[ "<< complain_levels[complain_index] << " ]" << '\n';
-                harl_obj.complain(complain_levels[complain_index]);
-                std::cout << '\n';
-            }
-            return (0);
+            std::cout << "[ "<< complain_levels[3] << " ]" << '\n';
+            harl_obj.complain(complain_levels[3]);
+            std::cout << '\n';
+            break ;
         default:
             std::cout << "[ Probably complaining about insignificant problems ]\n";
     }
