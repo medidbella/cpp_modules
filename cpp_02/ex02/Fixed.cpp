@@ -2,30 +2,37 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called\n";
+	// std::cout << "Default constructor called\n";
 	value = 0;
 }
 
 Fixed::Fixed(const Fixed &dest)
 {
-	std::cout << "Copy constructor called\n";
+	// std::cout << "Copy constructor called\n";
 	value = dest.value;
 }
 
 Fixed::Fixed(const int number)
 {
-	std::cout << "int constructor called\n";
+	// std::cout << "int constructor called\n";
 	value = number << fractionalBitsNumber;
 }
 
 Fixed::Fixed(const float number)
 {
-	std::cout << "float constructor called\n";
+	// std::cout << "float constructor called\n";
 	value = 0;
+	int sign = 1;
 	int integerPart = number;
 	float fractionalPart;
 
 	fractionalPart = number - integerPart;
+	if (number < 0)
+	{
+		fractionalPart *= -1;
+		integerPart *= -1;
+		sign = -1;
+	}
 	for (int bits = 1; bits <= fractionalBitsNumber; bits++)
 	{
 		value <<= 1;
@@ -36,14 +43,10 @@ Fixed::Fixed(const float number)
 			fractionalPart -= 1;
 		}
 	}
-	value += integerPart << fractionalBitsNumber;
+	value += (integerPart << fractionalBitsNumber);
+	value *= sign;
 }
 
-void Fixed::operator =(const Fixed &otherObject)
-{
-	std::cout << "used copy assignment operator\n";
-	value = otherObject.value;
-}
 
 void Fixed::setRawBits(int newValue)
 {
@@ -53,7 +56,7 @@ void Fixed::setRawBits(int newValue)
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called\n";
+	// std::cout << "getRawBits member function called\n";
 	return value;
 }
 
@@ -71,18 +74,23 @@ float Fixed::toFloat() const
 	return (integerPart + fractionalPart);
 }
 
-int Fixed::toInt( void ) const
+int Fixed::getFractionalBitsNumber() const
+{
+	return fractionalBitsNumber;
+}
+
+int Fixed::toInt(void) const
 {
 	return (value >> fractionalBitsNumber);
 }
 
 std::ostream& operator <<(std::ostream &out, const Fixed &number)
 {
-	out << number.toFloat();
+	std::cout << std::setprecision(32) << number.toFloat();
 	return out;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	// std::cout << "Destructor called\n";
 }

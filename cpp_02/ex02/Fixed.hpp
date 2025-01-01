@@ -4,7 +4,7 @@
 # include <cmath> 
 #include <iomanip>
 # include <iostream>
-
+//f++ ++f --f f--
 class Fixed{
 	private:
 		int value;
@@ -15,11 +15,30 @@ class Fixed{
 		Fixed(const Fixed &dest);
 		Fixed(const int number);
 		Fixed(const float number);
-		void operator =(const Fixed &otherObject);
+		Fixed operator =(const Fixed &otherObject);
+		bool operator >(const Fixed &otherObject);
+		bool operator <(const Fixed &otherObject);
+		bool operator >=(const Fixed &otherObject);
+		bool operator <=(const Fixed &otherObject);
+		bool operator ==(const Fixed &otherObject);
+		bool operator !=(const Fixed &otherObject);
+		Fixed operator +(const Fixed &otherObject);
+		Fixed operator -(const Fixed &otherObject);
+		Fixed operator *(const Fixed &otherObject);
+		Fixed operator /(const Fixed &otherObject);
+		Fixed operator ++(void);
+		Fixed operator ++(int);
+		Fixed operator --(void);
+		Fixed operator --(int);
+		static Fixed& min(Fixed &number1, Fixed &number2);
+		static const Fixed& min(const Fixed &number1, const Fixed &number2);
+		static Fixed& max(Fixed &number1, Fixed &number2);
+		static const Fixed& max(const Fixed &number1, const Fixed &number2);
 		void setRawBits(int newValue);
-		int	getRawBits() const;
-		float toFloat() const;
+		int	getRawBits(void) const;
+		float toFloat(void) const;
 		int toInt(void) const;
+		int getFractionalBitsNumber() const;
 		~Fixed();
 };
 

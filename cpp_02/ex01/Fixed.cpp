@@ -78,7 +78,7 @@ int Fixed::toInt( void ) const
 
 std::ostream& operator <<(std::ostream &out, const Fixed &number)
 {
-	out << number.toFloat();
+	out << std::setprecision(32) << number.toFloat();
 	return out;
 }
 
