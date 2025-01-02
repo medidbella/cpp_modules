@@ -14,17 +14,17 @@ Fixed::Fixed(const Fixed &dest){
 
 void Fixed::operator=(const Fixed &otherObject){
 	std::cout << "used copy assignment operator\n";
-	this->value = otherObject.value;
+	value = otherObject.value;
 }
 
 void Fixed::setRawBits(int newValue){
 	std::cout << "setRawBits member function called\n";
-	this->value = newValue;
+	value = newValue;
 }
 
 int Fixed::getRawBits(){
 	std::cout << "getRawBits member function called\n";
-	return this->value;
+	return value;
 }
 
 Fixed::~Fixed(){

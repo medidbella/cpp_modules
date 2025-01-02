@@ -1,26 +1,28 @@
 #include "Fixed.hpp"
 
+const int Fixed::fractionalBitsNumber = 8;
+
 Fixed::Fixed()
 {
-	// std::cout << "Default constructor called\n";
+	std::cout << "Default constructor called\n";
 	value = 0;
 }
 
 Fixed::Fixed(const Fixed &dest)
 {
-	// std::cout << "Copy constructor called\n";
+	std::cout << "Copy constructor called\n";
 	value = dest.value;
 }
 
 Fixed::Fixed(const int number)
 {
-	// std::cout << "int constructor called\n";
+	std::cout << "int constructor called\n";
 	value = number << fractionalBitsNumber;
 }
 
 Fixed::Fixed(const float number)
 {
-	// std::cout << "float constructor called\n";
+	std::cout << "float constructor called\n";
 	value = 0;
 	int sign = 1;
 	int integerPart = number;
@@ -56,7 +58,7 @@ void Fixed::setRawBits(int newValue)
 
 int Fixed::getRawBits() const
 {
-	// std::cout << "getRawBits member function called\n";
+	std::cout << "getRawBits member function called\n";
 	return value;
 }
 
@@ -92,5 +94,5 @@ std::ostream& operator <<(std::ostream &out, const Fixed &number)
 
 Fixed::~Fixed()
 {
-	// std::cout << "Destructor called\n";
+	std::cout << "Destructor called\n";
 }

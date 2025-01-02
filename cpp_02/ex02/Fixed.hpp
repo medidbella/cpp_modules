@@ -4,11 +4,11 @@
 # include <cmath> 
 #include <iomanip>
 # include <iostream>
-//f++ ++f --f f--
+
 class Fixed{
 	private:
 		int value;
-		static const int fractionalBitsNumber = 8;
+		static const int fractionalBitsNumber;
 	
 	public:
 		Fixed();

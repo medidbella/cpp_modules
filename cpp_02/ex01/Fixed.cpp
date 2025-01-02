@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int Fixed::fractionalBitsNumber = 8;
+
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
@@ -22,10 +24,17 @@ Fixed::Fixed(const float number)
 {
 	std::cout << "float constructor called\n";
 	value = 0;
+	int sign = 1;
 	int integerPart = number;
 	float fractionalPart;
 
 	fractionalPart = number - integerPart;
+	if (number < 0)
+	{
+		fractionalPart *= -1;
+		integerPart *= -1;
+		sign = -1;
+	}
 	for (int bits = 1; bits <= fractionalBitsNumber; bits++)
 	{
 		value <<= 1;
@@ -36,8 +45,10 @@ Fixed::Fixed(const float number)
 			fractionalPart -= 1;
 		}
 	}
-	value += integerPart << fractionalBitsNumber;
+	value += (integerPart << fractionalBitsNumber);
+	value *= sign;
 }
+
 
 void Fixed::operator =(const Fixed &otherObject)
 {
