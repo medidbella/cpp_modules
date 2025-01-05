@@ -34,10 +34,11 @@ Fixed::Fixed(const float number)
 	value += (integerPart << fractionalBitsNumber);
 }
 
-void Fixed::operator =(const Fixed &otherObject)
+Fixed Fixed::operator =(const Fixed &otherObject)
 {
 	std::cout << "used copy assignment operator\n";
 	value = otherObject.value;
+	return *this;
 }
 
 void Fixed::setRawBits(int newValue)

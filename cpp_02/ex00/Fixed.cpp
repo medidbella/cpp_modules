@@ -12,9 +12,10 @@ Fixed::Fixed(const Fixed &dest){
 	value = dest.value;
 }
 
-void Fixed::operator=(const Fixed &otherObject){
+Fixed Fixed::operator=(const Fixed &otherObject){
 	std::cout << "used copy assignment operator\n";
 	value = otherObject.value;
+	return *this;	
 }
 
 void Fixed::setRawBits(int newValue){

@@ -11,7 +11,7 @@ class Fixed{
 	public:
 		Fixed();
 		Fixed(const Fixed &dest);
-		void operator =(const Fixed &otherObject);
+		Fixed operator =(const Fixed &otherObject);
 		~Fixed();
 		void setRawBits(int newValue);
 		int	getRawBits();
