@@ -28,8 +28,6 @@ Fixed::Fixed(const float number)
 	float fractionalPart;
 
 	fractionalPart = number - integerPart;
-	if (number < 0)
-		fractionalPart *= -1;
 	value = roundf(fractionalPart * std::pow(2, fractionalBitsNumber));
 	value += (integerPart << fractionalBitsNumber);
 }
