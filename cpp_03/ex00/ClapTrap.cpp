@@ -1,8 +1,33 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string initName)
+ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap default constructor called\n";
+	name = "unnamed";
+	AttackDamage = 0;
+	hitPoints = 10;
+	energyPoints = 10;
+}
+
+void ClapTrap::setName(std::string newName){
+	name = newName;
+}
+
+void ClapTrap::setAttackDamage(int newValue){
+	AttackDamage = newValue;
+}
+
+void ClapTrap::setEnergyPoints(int newValue){
+	energyPoints = newValue;
+}
+
+void ClapTrap::setHitPoints(int newValue){
+	hitPoints = newValue;
+}
+
+ClapTrap::ClapTrap(std::string initName)
+{
+	std::cout << "ClapTrap constructor called\n";
 	name = initName;
 	AttackDamage = 0;
 	hitPoints = 10;
