@@ -1,6 +1,30 @@
 #include "ScavTrap.hpp"
 
+void testDestructionOrder(){
+	ScavTrap *bot = new ScavTrap("test");
+	delete bot;
+}
+
+void logStats(ScavTrap &bot){
+	std::cout << "name = " << bot.getName() << '\n';
+	std::cout << "energy points = " << bot.getEnergypoints() << '\n';
+	std::cout << "hit points = " << bot.getHitPoints() << '\n';
+	std::cout << "attack damage = " << bot.getAttackDamage() << '\n';
+}
+
+void generalTest(){
+	ScavTrap robot("bit");
+
+	logStats(robot);
+	robot.attack("targetBot");
+	std::cout << "energy points after attacking = " << robot.getEnergypoints() << '\n';
+	robot.takeDamage(10);
+	std::cout << "hit points after taking 10 points of damage = " <<robot.getHitPoints() << '\n';
+	robot.guardGate();
+}
+
 int main()
 {
-	ScavTrap test;
+	generalTest();
+	// testDestructionOrder();
 }

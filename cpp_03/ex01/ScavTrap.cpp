@@ -22,7 +22,7 @@ ScavTrap::~ScavTrap(){
 }
 
 void ScavTrap::guardGate(){
-	std::cout << " ScavTrap " + getName() + "is now in Gatekeeper mode\n";
+	std::cout << "ScavTrap " + getName() + " is now in Gatekeeper mode\n";
 }
 
 void ScavTrap::attack(const std::string& target)

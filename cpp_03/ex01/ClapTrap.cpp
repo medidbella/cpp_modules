@@ -9,6 +9,7 @@ ClapTrap::ClapTrap()
 	energyPoints = 10;
 }
 
+
 ClapTrap::ClapTrap(std::string initName)
 {
 	std::cout << "ClapTrap constructor called\n";
