@@ -25,6 +25,6 @@ void generalTest(){
 
 int main()
 {
-	generalTest();
-	// testDestructionOrder();
+	// generalTest();
+	testDestructionOrder();
 }

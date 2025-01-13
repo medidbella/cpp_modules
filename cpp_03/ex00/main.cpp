@@ -3,7 +3,6 @@
 void logStats(ClapTrap &obj)
 {
 	std::cout << "____" + obj.getName() + " data___\n\n";
-	// std::cout << "name = " << obj.getName() << '\n';
 	std::cout << "hit points = " << obj.getHitPoints() << '\n';
 	std::cout << "energy points = " << obj.getEnergypoints() << '\n';
 	std::cout << "attack damage = " << obj.getAttackDamage() << '\n';

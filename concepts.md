@@ -15,4 +15,7 @@
 
 => MODULE 03:
 
-	...
+	inherence.
+
+=> MODULE 04:
+  
