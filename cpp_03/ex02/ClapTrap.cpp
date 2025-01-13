@@ -4,17 +4,16 @@ ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap default constructor called\n";
 	name = "unnamed";
-	AttackDamage = 0;
+	attackDamage = 0;
 	hitPoints = 10;
 	energyPoints = 10;
 }
-
 
 ClapTrap::ClapTrap(std::string initName)
 {
 	std::cout << "ClapTrap constructor called\n";
 	name = initName;
-	AttackDamage = 0;
+	attackDamage = 0;
 	hitPoints = 10;
 	energyPoints = 10;
 }
@@ -23,7 +22,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &source)
 {
 	std::cout << "ClapTrap copy assignment operator called\n";
 	name = source.name;
-	AttackDamage = source.AttackDamage;
+	attackDamage = source.attackDamage;
 	hitPoints = source.hitPoints;
 	energyPoints = source.energyPoints;
 	return *this;
@@ -33,7 +32,7 @@ ClapTrap::ClapTrap(const ClapTrap &dest)
 {
 	std::cout << "ClapTrap copy constructor called\n";
 	name = dest.name;
-	AttackDamage = dest.AttackDamage;
+	attackDamage = dest.attackDamage;
 	hitPoints = dest.hitPoints;
 	energyPoints = dest.energyPoints;
 }
@@ -54,7 +53,7 @@ void ClapTrap::attack(const std::string& target)
 	}
 	energyPoints -= 1;
 	std::cout << "ClapTrap " << name << " attacks " << target
-		<< ", causing " << AttackDamage << " points of damage!\n";
+		<< ", causing " << attackDamage << " points of damage!\n";
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -96,7 +95,7 @@ int ClapTrap::getEnergypoints(){
 }
 
 int ClapTrap::getAttackDamage(){
-	return AttackDamage;
+	return attackDamage;
 }
 
 std::string ClapTrap::getName(){
@@ -108,7 +107,7 @@ void ClapTrap::setName(std::string newName){
 }
 
 void ClapTrap::setAttackDamage(int newValue){
-	AttackDamage = newValue;
+	attackDamage = newValue;
 }
 
 void ClapTrap::setEnergyPoints(int newValue){

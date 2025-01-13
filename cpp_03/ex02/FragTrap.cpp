@@ -3,26 +3,26 @@
 FragTrap::FragTrap()
 {
 	std::cout << "FragTrap default constructor called\n";
-	setName("unnamed");
-	setHitPoints(100);
-	setAttackDamage(30);
-	setEnergyPoints(100);
+	name = "unnamed";
+	hitPoints = 100;
+	attackDamage = 30;
+	energyPoints = 100;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string newName)
 {
 	std::cout << "FragTrap default constructor called\n";
-	setName(name);
-	setHitPoints(100);
-	setAttackDamage(30);
-	setEnergyPoints(100);
+	name = newName;
+	hitPoints = 100;
+	attackDamage = 30;
+	energyPoints = 100;
 }
 
 FragTrap::~FragTrap(){
-	std::cout << "FragTrap " + getName() + " destructor called\n";
+	std::cout << "FragTrap " + name + " destructor called\n";
 }
 
 void FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap "+ getName() +" is requesting a high five\n";
+	std::cout << "FragTrap "+ name +" is requesting a high five\n";
 }

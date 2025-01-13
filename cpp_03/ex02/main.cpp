@@ -35,6 +35,6 @@ void TestLimit(){
 int main()
 {
 	TestLimit();
-	// generalTest();
-	// testDestructionOrder();
+	generalTest();
+	testDestructionOrder();
 }

@@ -23,8 +23,19 @@ void generalTest(){
 	robot.guardGate();
 }
 
+void TestLimit(){
+	ScavTrap bot("frag");
+	logStats(bot);
+	bot.setEnergyPoints(0);
+	std::cout << "bot energy is now = " << bot.getEnergypoints() << '\n';
+	bot.attack("target bot");
+	bot.beRepaired(10);
+}
+
+
 int main()
 {
-	// generalTest();
+	TestLimit();
+	generalTest();
 	testDestructionOrder();
 }
