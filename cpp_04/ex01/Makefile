@@ -1,6 +1,6 @@
 FILES = $(shell ls | grep .cpp)
-PROG = polymorphism_P2
-FLAGS = -Wall -Wextra -Werror -std=c++98
+PROG = ex01
+FLAGS = -g3 -fsanitize=address -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 
 $(PROG): $(OBJ_FILES)
