@@ -3,7 +3,7 @@
 
 int main()
 {
-	// test1
+	//test1
 	{
 		const int size = 4;
 		Animal **pets = new Animal*[size];
@@ -32,10 +32,6 @@ int main()
 		delete generalPtr1;
 		delete generalPtr2;
 	}
-	// test4
-	{
-		Dog basic;
-		Dog tmp = basic;
-		Dog tmp2(basic);
-	}
+	//this is considered a compile time error 
+	// Animal AnimalObject; 
 }
