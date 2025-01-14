@@ -1,28 +1,30 @@
 #include "Animal.hpp"
 
-Animal::Animal()
-{
+Animal::Animal(){
 	std::cout << "Animal default constructor used\n";
 	type = "undefined";
 }
 
 Animal::Animal(const Animal &src){
-	std::cout << "animal copy constructor is used";
+	std::cout << "animal copy constructor is used\n";
 	type = src.type;
 }
 
-void Animal::makeSound(){
-	if (type == "Cat")
-		std::cout << "Cat is making a sound : mew mew ...\n";
-	else if (type == "Dog")
-		std::cout << "Dog is making a sound : ouf ouf ...\n";
-	else
-		std::cout << "Animal is making an unknown sound : non\n";
+void Animal::makeSound() const{
+	std::cout << "Animal is making an unknown sound : non\n";
 }
 
 Animal &Animal::operator=(const Animal &src){
 	type = src.type;
 	return *this;
+}
+
+void Animal::setType(std::string &newType){
+	type = newType;
+}
+
+std::string Animal::getType(void) const{
+		return type;
 }
 
 Animal::~Animal(){

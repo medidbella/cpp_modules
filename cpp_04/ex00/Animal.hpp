@@ -1,3 +1,6 @@
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+
 #include <iostream>
 
 class Animal
@@ -7,7 +10,10 @@ class Animal
 	public:
 		Animal();
 		Animal(const Animal &src);
-		~Animal();
+		virtual ~Animal();
+		std::string	getType() const;
+		void setType(std::string &newType);
 		Animal& operator=(const Animal &src);
-		void makeSound();
+		virtual void makeSound() const;
 };
+#endif

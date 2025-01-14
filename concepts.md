@@ -18,4 +18,4 @@
 	inherence.
 
 => MODULE 04:
-  
+        sub-object polymorphism, virtual functions,  
