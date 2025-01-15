@@ -18,4 +18,6 @@
 	inherence.
 
 => MODULE 04:
-        sub-object polymorphism, virtual functions,  
+
+	sub-object polymorphism, virtual functions, abstract classes,
+	 pure virtual functions, shallow and deep functions.  
