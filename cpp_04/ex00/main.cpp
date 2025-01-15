@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
-
+#include "WrongCat.hpp"
 
 void test(Animal &ref){
 	std::cout << ref.getType() << "\n";
@@ -53,5 +53,11 @@ int main()
 		i.makeSound();
 		j.makeSound();
 		meta.makeSound();
+	}
+	//test 6
+	{
+		const WrongAnimal& i = WrongCat();
+		std::cout << i.getType() << "\n";
+		i.makeSound();
 	}
 }
