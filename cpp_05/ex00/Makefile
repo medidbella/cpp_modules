@@ -1,5 +1,5 @@
 FILES = $(shell ls | grep .cpp)
-PROG = frag_trap
+PROG = ex00
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 

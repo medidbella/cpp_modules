@@ -6,11 +6,13 @@ Bureaucrat::Bureaucrat() : name("unknow")
 	grade = 150;
 }
 
-Bureaucrat::Bureaucrat(std::string &initName, int initGrade) : name(initName)
+Bureaucrat::Bureaucrat(const std::string &initName, int initGrade) : name(initName)
 {
 	std::cout << "Bureaucrat constructor is used\n";
-	// if (grade > 150 || grade < 1)
-		//throw the exception
+	if (initGrade > 150)
+		throw TooLowException;
+	else if (initGrade < 1)
+		throw TooHighException;
 	grade = initGrade;
 }
 
@@ -24,30 +26,36 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &source)
 {
 	std::cout << "Bureaucrat copy assignment operator is used\n";
 	grade = source.grade;
+	return *this;
 }
 
-int Bureaucrat::getGrade(){
+int Bureaucrat::getGrade() const{
 	return grade;
 }
 
-const std::string &Bureaucrat::getName(){
+const std::string &Bureaucrat::getName() const{
 	return name;
 }
 
 void Bureaucrat::incrementGrade()
 {
-	// if (grade > 150 || grade < 150)
-		// throw exception
-	grade++;
+	if (grade <= 1)
+		throw TooHighException;
+	grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	// if (grade > 150 || grade < 150)
-		// throw exception
-	grade--;
+	if (grade >= 150)
+		throw TooLowException;
+	grade++;
 }
 
 Bureaucrat::~Bureaucrat(){
 	std::cout << "Bureaucrat destructor is used\n";
+}
+
+std::ostream& operator<<(std::ostream &stream, const Bureaucrat &data){
+	stream << data.getName() + ", bureaucrat grade = " << data.getGrade() << ".\n";
+	return stream;
 }
