@@ -2,7 +2,7 @@
 
 GradeTooLowException::GradeTooLowException()
 {
-	errorMessage = "the provided grade is too Low, the grade range is (1-150)";
+	errorMessage = "the provided grade is too Low";
 }
 
 const char *GradeTooLowException::what() const throw(){

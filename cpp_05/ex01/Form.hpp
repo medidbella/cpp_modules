@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef Form_HPP
+#define Form_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
