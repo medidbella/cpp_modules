@@ -15,14 +15,14 @@ Form::Form(const Form &source) : name(source.name),
 	_signed = source._signed;
 }
 
-Form::Form(std::string &initName, int signGrade, int executeGrade) : name(initName),
+Form::Form(const std::string &initName, int signGrade, int executeGrade) : name(initName),
 	requiredSignGrade(signGrade), requiredExecuteGrade(executeGrade)
 {
-	std::cout << "Form constructor is used\n";
 	if (signGrade > 150 || executeGrade > 150)
 		throw GradeTooLowException();
 	else if (signGrade < 0 || executeGrade < 0)
 		throw GradeTooHighException();
+	std::cout << "Form constructor is used\n";
 	_signed = false;
 }
 
@@ -38,6 +38,17 @@ Form &Form::operator=(const Form &source)
 {
 	_signed = source._signed;
 	return *this;
+}
+
+std::ostream &operator<<(std::ostream &stream, const Form &data)
+{
+	std::string msg = "not signed";
+	if (data.isSigned())
+		msg = "signed";
+	stream << "Form " + data.getName() + " is " + msg + ", grade to sign = " 
+		<< data.getSignGrade() << " grade to execute = "
+		<< data.getExecuteGrade() << '\n';
+	return stream;
 }
 
 std::string Form::getName() const {return name;}

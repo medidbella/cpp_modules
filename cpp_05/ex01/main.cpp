@@ -1,69 +1,69 @@
 #include "Bureaucrat.hpp"
 #include <cstdlib>
 
-void test1() //too low decrement grade test
+void test4()//test Form::beSigned method
 {
-	Bureaucrat acountnat("bob", 150);
-	std::cout << acountnat;
+	Bureaucrat worker("bob", 31);
+	Form paper("report", 30, 31);
+	std::cout << paper;
 	try{
-		acountnat.decrementGrade();
+		paper.beSigned(worker);
 	}
 	catch (std::exception &exception){
-		std::cout << exception.what() << '\n';
-		std::cout << "exception caught, the Bureaucrat grade will remain the same\n";
+		std::cout << paper.getName() << " could not be signed\n";
 	}
-	std::cout << acountnat;
+	std::cout << paper;
 }
 
-void test2() //too hight increment grade test
+void test3()//test invalid construction of Form (low grade)
 {
-	Bureaucrat manager("mike", 1);
-	try{
-		manager.incrementGrade();
+	Form *formPtr;
+	try {
+		formPtr = new Form("paper", 45, 180);
 	}
-	catch (GradeTooHighException &exception)
+	catch(GradeTooLowException &err)
 	{
-		std::cout << exception.what() << '\n';
-		std::cout << "exception caught, the Bureaucrat grade will remain the same\n";
+		std::cout << err.what() << '\n';
+		formPtr = new Form("paper", 150, 150);
 	}
+	std::cout << *formPtr;
+}
+
+void test2()// test invalid construction of Form (high grade)
+{
+	Form *formPtr;
+	try {
+		formPtr = new Form("paper", -1, 100);
+	}
+	catch(GradeTooHighException &err)
+	{
+		std::cout << err.what() << '\n';
+		formPtr = new Form();
+	}
+	std::cout << *formPtr;
+}
+
+void test1() //test Bureaucrat::signForm method
+{
+	Bureaucrat manager("fred", 2);
+	Form report("important report", 1, 10);
 	std::cout << manager;
+	std::cout << report;
+	manager.signForm(report);
+	manager.incrementGrade();
+	std::cout << manager.getName() + "'s grade is incremented\n";
+	manager.signForm(report);
+	std::cout << report;
 }
 
-void test3() //too low grade in construction
+void test0() // general test
 {
-	try{
-		Bureaucrat director("someone", 160);
-		std::cout << director;
-	}
-	catch (GradeTooLowException &err){
-		std::cout << "failed to instantiate the Bureaucrat\n";
-		std::cout << err.what() << '\n';
-	}
-}
-
-void test4() //invalid grade in construction
-{
-	try{
-		Bureaucrat director("someone", -1);
-		std::cout << director;
-	}
-	catch (std::exception &err){
-		std::cout << "failed to instantiate the Bureaucrat\n";
-		std::cout << err.what() << '\n';
-	}
-}
-
-
-void test0() //general test
-{
-	Bureaucrat test("test", 30);
-	std::cout << "grade = " << test.getGrade() << "\n";
-	std::cout << "name = " << test.getName() << "\n";
-	test.decrementGrade();
-	std::cout << "grade after using decrementGrade method = " << test.getGrade() << '\n';
-	test.incrementGrade();
-	std::cout << "grade after using incrementGrade method = " << test.getGrade() << '\n';
-	std::cout << test;
+	Bureaucrat deskWorker("bob", 130);
+	Form report("daily report", 130, 10);
+	std::cout << deskWorker;
+	std::cout << report;
+	deskWorker.signForm(report);
+	std::cout << report;
 }
 
 int main(int ac, char **av)

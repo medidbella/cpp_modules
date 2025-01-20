@@ -1,10 +1,12 @@
-#ifndef BUREAUCRAT
-#define BUREAUCRAT
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
 #include <iostream>
 #include "Form.hpp"
+
+class Form ;
 
 class Bureaucrat{
 	private:

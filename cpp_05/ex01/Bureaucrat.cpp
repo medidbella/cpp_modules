@@ -53,7 +53,7 @@ void Bureaucrat::decrementGrade()
 
 void Bureaucrat::signForm(Form &FormToSign) const
 {
-	try{
+	try {
 		FormToSign.beSigned(*this);
 	}
 	catch (GradeTooLowException &exception){
@@ -61,6 +61,7 @@ void Bureaucrat::signForm(Form &FormToSign) const
 			<< " because his grade (" << grade
 			<< ") is lower than the required sign grade ("
 			<< FormToSign.getSignGrade() << ")\n";
+		return ;
 	}
 	std::cout << name + " Signed " + FormToSign.getName() << '\n';
 }
