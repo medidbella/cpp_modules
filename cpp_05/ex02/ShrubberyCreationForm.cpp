@@ -51,7 +51,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	   `&%\\ ` /%&'    |.|        \\ '|8'\n\
 	       |o|        | |         | |\n\
 	       |.|        | |         | |\n\
-	jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n";
+	    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n";
 
 	trees[1] = 
 	"		      ccee88oo\n\
