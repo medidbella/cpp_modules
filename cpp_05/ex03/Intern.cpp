@@ -11,7 +11,7 @@ Intern::Intern()
 Intern::Intern(const Intern &source)
 {
 	std::cout << "intern copy constructor used\n";
-	for (int i = 0; i<3;i++)
+	for (int i = 0; i < 3 ;i++)
 		knownTypes[i] = source.knownTypes[i];
 }
 
@@ -20,6 +20,8 @@ AForm *Intern::makeForm(std::string formType, std::string target)const
 	int index = 0;
 	while (index < 3 && knownTypes[index] != formType)	
 		index++;
+	if (index != 3)
+		std::cout << "intern made a " + formType + " form\n";
 	switch (index)
 	{
 		case 0:

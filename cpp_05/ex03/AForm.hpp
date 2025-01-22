@@ -25,7 +25,7 @@ class AForm
 		void beSigned(const Bureaucrat &worker);
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		AForm &operator=(const AForm &source);
-		~AForm();
+		virtual ~AForm();
 };
 
 std::ostream &operator<<(std::ostream &stream, const AForm &data);
