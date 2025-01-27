@@ -1,7 +1,6 @@
 #include "ScalarConverter.hpp"
 #include <string>
 #include <iostream>
-
 // ./convert 42.0f
 // char: '*'
 // int: 42
@@ -29,4 +28,3 @@ int main(int Argc, char **Argv)
 	}
 	ScalarConverter::convert(input);
 }
-

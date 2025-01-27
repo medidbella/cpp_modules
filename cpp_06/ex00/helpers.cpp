@@ -7,7 +7,8 @@ void toInteger(std::string &input, void **value)
 	if (errno == ERANGE || result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
 	{
 		value = NULL;
-		return ;//overflow
+		std::cerr << "integer overflow\n";
+		return ;
 	}
 	*value = new int((int)result);
 	return ;
@@ -58,7 +59,8 @@ void toFloat(std::string &input, void **value)
 	if (floatString.fail() || std::isinf(res) || std::isnan(res))
 	{
 		value = NULL;
-		return ;//overflow 
+		std::cerr << "float overflow\n";
+		return ; 
 	}
 	*value = new float(res);
 	return;
@@ -73,7 +75,8 @@ void toDouble(std::string &input, void **value)
 	if (doubleString.fail() || std::isinf(res) || std::isnan(res))
 	{
 		value = NULL;
-		return ;//overflow
+		std::cerr << "double overflow\n";
+		return ;
 	}
 	doubleString >> res;
 	*value = new double(res);
@@ -125,7 +128,10 @@ void getCorrectType(const std::string &input, void **value, int *type)
 	std::string trimmed;
 	trimmed = trimString(input);
 	if (input.empty())
-		value = NULL;//empty string
+	{
+		std::cerr << "empty string after trimming\n";
+		value = NULL;
+	}
 	if (trimmed.length() == 1 && !std::isdigit(input[0]))
 	{
 		*value = new char(input[0]);
@@ -133,7 +139,6 @@ void getCorrectType(const std::string &input, void **value, int *type)
 		return ;
 	}
 	format = checkFormat(trimmed);
-	std::cout << "format = " << format << '\n';
 	*type = format;
 	switch (format)
 	{
@@ -144,7 +149,8 @@ void getCorrectType(const std::string &input, void **value, int *type)
 		case DOUBLE_FORM:
 			return toDouble(trimmed, value);
 		default:
-			value = NULL;//syntax error
+			std::cerr << "syntax error\n";
+			value = NULL;
 	}
 	return ;
 }
