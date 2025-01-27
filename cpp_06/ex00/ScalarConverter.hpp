@@ -1,6 +1,7 @@
 #ifndef SCALAR_CONVERTER_HPP
 #define SCALAR_CONVERTER_HPP
 
+#include "helpers.hpp"
 #include <iostream>
 #include <string>
 #include <climits>
