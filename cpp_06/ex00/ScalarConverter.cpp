@@ -59,6 +59,14 @@ void explicitCasting(int value)
 	std::cout << "double: " << std::fixed << std::setprecision(1) << (double)value << '\n';
 }
 
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &source){}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &source){}
+
+ScalarConverter::~ScalarConverter(){}
+
 void ScalarConverter::convert(const std::string &scalar)
 {
 	int dataType = -1;

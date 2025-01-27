@@ -1,17 +1,6 @@
 #include "ScalarConverter.hpp"
 #include <string>
 #include <iostream>
-// ./convert 42.0f
-// char: '*'
-// int: 42
-// float: 42.0f
-// double: 42.0
-
-// ./convert nan
-// char: impossible
-// int: impossible
-// float: nanf
-// double: nan
 
 int main(int Argc, char **Argv)
 {
