@@ -25,3 +25,11 @@
 => MODULE 05:
 
 	exceptions.
+
+=> MODULE 06:
+
+	c++ casts (dynamic, static, reinterpret).
+
+=> MODULE 07:
+
+	
