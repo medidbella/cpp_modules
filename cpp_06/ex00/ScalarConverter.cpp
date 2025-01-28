@@ -3,9 +3,9 @@
 void explicitCasting(char value)
 {
 	std::cout << "char: '" << value << "'\n";
-	std::cout << "int: " << (int)value << '\n';
-	std::cout << "float: " << std::fixed << std::setprecision(1) << (float)value << '\n';
-	std::cout << "double: " << std::fixed << std::setprecision(1) << (double)value << '\n';
+	std::cout << "int: " << static_cast<int>(value)<< '\n';
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value)<< '\n';
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value)<< '\n';
 }
 
 void explicitCasting(float value)
@@ -19,13 +19,13 @@ void explicitCasting(float value)
 	else 
 	{
 		if (isascii(value) && std::isprint(value))
-			std::cout << "char: '" << (char)value << "'\n";
+			std::cout << "char: '" << static_cast<char>(value)<< "'\n";
 		else
 			std::cout << "char: impossible\n";
-		std::cout << "int: " << (int)value << '\n';
+		std::cout << "int: " << static_cast<int>(value)<< '\n';
 	}
-	std::cout << "float: " << std::fixed << std::setprecision(1) << (float)value << 'f' << '\n';
-	std::cout << "double: " << std::fixed << std::setprecision(1) << (double)value << '\n';
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value)<< 'f' << '\n';
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value)<< '\n';
 }
 
 void explicitCasting(double value)
@@ -39,24 +39,24 @@ void explicitCasting(double value)
 	else 
 	{
 		if (isascii(value) && std::isprint(value))
-			std::cout << "char: '" << (char)value << "'\n";
+			std::cout << "char: '" << static_cast<char>(value)<< "'\n";
 		else
 			std::cout << "char: impossible\n";
-		std::cout << "int: " << (int)value << '\n';
+		std::cout << "int: " << static_cast<int>(value)<< '\n';
 	}
-	std::cout << "float: " << std::fixed << std::setprecision(1) <<  (float)value << 'f' << '\n';
-	std::cout << "double: " << std::fixed << std::setprecision(1) << (double)value << '\n';
+	std::cout << "float: " << std::fixed << std::setprecision(1) <<  static_cast<float>(value)<< 'f' << '\n';
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value)<< '\n';
 }
 
 void explicitCasting(int value)
 {
 	if (isascii(value) && std::isprint(value))
-		std::cout << "char: '" << (char)value << "'\n";
+		std::cout << "char: '" << static_cast<char>(value)<< "'\n";
 	else 
 		std::cout << "char: impossible\n";
 	std::cout << "int: " << value << '\n';
-	std::cout << "float: " << std::fixed << std::setprecision(1) << (float)value << 'f' << '\n';
-	std::cout << "double: " << std::fixed << std::setprecision(1) << (double)value << '\n';
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value)<< 'f' << '\n';
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value)<< '\n';
 }
 
 ScalarConverter::ScalarConverter(){}
@@ -82,19 +82,19 @@ void ScalarConverter::convert(const std::string &scalar)
 	switch (dataType)
 	{
 		case CHAR_FORM:
-			explicitCasting(*(char*)valuePtr);
+			explicitCasting(*static_cast<char*>(valuePtr));
 			delete (char*)valuePtr;
 			break;
 		case INT_FORM:
-			explicitCasting(*(int*)valuePtr);
+			explicitCasting(*static_cast<int*>(valuePtr));
 			delete (int*)valuePtr;
 			break;
 		case FLOAT_FORM:
-			explicitCasting(*(float*)valuePtr);
+			explicitCasting(*static_cast<float*>(valuePtr));
 			delete (float*)valuePtr;
 			break;
 		case DOUBLE_FORM:
-			explicitCasting(*(double*)valuePtr);
+			explicitCasting(*static_cast<double*>(valuePtr));
 			delete (double*)valuePtr;
 			break;
 	}
