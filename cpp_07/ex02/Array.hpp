@@ -49,7 +49,7 @@ Array<T> &Array<T>::operator=(const Array& sourceArray)
 	if (!sourceArray.arrayBlock)
 	{
 		arrayBlock = NULL;
-		return;
+		return *this;
 	}
 	arrayBlock = new T[sourceArray.size()];
 	memSize = sourceArray.size();

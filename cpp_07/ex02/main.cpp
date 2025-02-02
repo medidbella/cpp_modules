@@ -1,54 +1,23 @@
 #include <iostream>
 #include "Array.hpp"
 #include <cstdlib>
-
+#include "Block.hpp"
 #define MAX_VAL 750
 
 int main(int, char**)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+    Array<t_Block> myArray(5);
+	myArray[4] = t_Block(1, 2, 3);
+	myArray[0] = t_Block(44, 44, 42);
+	for (int i = 0; (unsigned)i < myArray.size(); i++)
+		std::cout << myArray[i] << '\n';
+	try
+	{
+		std::cout << myArray[5] << '\n';
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "caught an exception\n";
+		std::cerr << e.what() << '\n';
+	}
 }

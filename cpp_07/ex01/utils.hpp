@@ -11,14 +11,14 @@ void doubleElement(T &element)
 
 template <typename T> void divideElement(T &element)
 {
-	element += element;
+	element /= 2;
 }
 
 template <typename T>
  void print(T *arrayAdrs, int arrayLen)
 {
 	for (int iter = 0; iter < arrayLen; iter++)
-		std::cout << arrayAdrs[iter];
+		std::cout << '[' << arrayAdrs[iter] << "] ";
 	std::cout << '\n';
 }
 

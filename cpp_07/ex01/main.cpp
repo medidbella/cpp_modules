@@ -39,13 +39,13 @@ int main()
 	}
 	//array of structs
 	{
-		const int size = 5;
+		const int size = 4;
 		t_Block array[size];
 		arrayInit(array, size);
-		std::cout << "struct array before :\n";
-		print(array, 5);
-		iter(array, 5, doubleElement);
-		std::cout << "after :\n";
-		print(array, 5);
+		std::cout << "struct array before : ";
+		print(array, size);
+		iter(array, size, doubleElement);
+		std::cout << "struct array after : ";
+		print(array, size);
 	}
 }
