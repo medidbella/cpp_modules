@@ -3,6 +3,7 @@
 
 #include <string>
 #include <exception>
+#include "InvalidIndexException.hpp"
 
 template <typename T>
 class Array
@@ -45,6 +46,11 @@ template <typename T>
 Array<T> &Array<T>::operator=(const Array& sourceArray)
 {
 	delete[] arrayBlock;
+	if (!sourceArray.arrayBlock)
+	{
+		arrayBlock = NULL;
+		return;
+	}
 	arrayBlock = new T[sourceArray.size()];
 	memSize = sourceArray.size();
 	for (int index = 0; (unsigned)index < memSize; index++)
@@ -63,7 +69,7 @@ template <typename T>
 T &Array<T>::operator[](unsigned int index)const
 {
 	if (index >= memSize)
-		throw std::exception();
+		throw InvalidIndexException();
 	return arrayBlock[index];
 }
 

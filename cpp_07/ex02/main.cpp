@@ -4,13 +4,6 @@
 
 #define MAX_VAL 750
 
-// int main()
-// {
-// 	Array<int> numbers(20);
-// 	Array<int> numbers2(numbers);
-// }
-
-
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
