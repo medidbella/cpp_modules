@@ -1,6 +1,6 @@
 FILES = $(shell ls | grep .cpp)
 PROG = ex01
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -fsanitize=address -g3 -Wall -Wextra -Werror -std=c++98
 OBJ_FILES = $(FILES:.cpp=.o)
 
 $(PROG): $(OBJ_FILES)

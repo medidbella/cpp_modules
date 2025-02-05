@@ -6,7 +6,12 @@ Span::Span()
 	std::cout << "used default constructor\n";
 }
 
-Span::Span(unsigned int initSize) : Numbers(initSize)
+int get_span(int a, int b)
+{
+	return abs(a - b);
+}
+
+Span::Span(unsigned int initSize)
 {
 	emptyBlocks = initSize;
 	std::cout << "used constructor\n";
@@ -43,18 +48,14 @@ int Span::shortestSpan() const
 {
 	if (Numbers.size() < 2)
 		throw 1;//throw ....
-	int secondUniqueElementIndex = -1;
-	for (int i = 1; i < Numbers.size(); i++)
-	{
-		if (Numbers[0] != Numbers[i])
-		{
-			secondUniqueElementIndex = i;
-			break ;
-		}
-	}
-	if (secondUniqueElementIndex == -1)
-		throw 1;//....
-	return (Numbers[0] - Numbers[secondUniqueElementIndex]);
+	std::vector<int> copy(Numbers.begin() + 1, Numbers.end());
+	std::vector<int> diffs(copy.size());
+	std::transform(copy.begin(), copy.end(), Numbers.begin(), diffs.begin(), get_span);
+	std::sort(diffs.begin(), diffs.end());
+	for (int i = 0; (unsigned)i < diffs.size(); i++)
+		if (diffs[i] > 0)
+			return diffs[i];
+	throw 1;//....
 }
 
 int Span::longestSpan() const
@@ -63,7 +64,7 @@ int Span::longestSpan() const
 		throw 1;//...
 	if (Numbers[0] == Numbers[Numbers.size() - 1])
 		throw 1;//...
-	return (Numbers[0] - Numbers[Numbers.size() - 1]);
+	return (abs(Numbers[Numbers.size() - 1] - Numbers[0]));
 	
 }
 
