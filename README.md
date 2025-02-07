@@ -32,4 +32,8 @@
 
 => MODULE 07:
 
-	templates	
+	templates functions and classes
+
+=> MODULE 08:
+
+	some of the standard library algorithm, containers, and iterators.  
