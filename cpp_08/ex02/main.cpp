@@ -3,7 +3,7 @@
 #include <deque>
 #include "MutantStack.hpp"
 
-int main()
+void sub_test()
 {
 	MutantStack<int> mstack;
 	mstack.push(5);
@@ -25,5 +25,26 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
-	return 0;
+}
+
+void test()
+{
+	MutantStack<std::string> newStack;
+	newStack.push("one");
+	newStack.push("two");
+	newStack.push("three");
+	newStack.push("four");
+	newStack.push("five");
+	MutantStack<std::string>::iterator iter = newStack.begin();
+	do {
+		std::cout << *iter << '\n';
+		++iter;
+	}
+	while (iter != newStack.end());
+	
+}
+
+int main()
+{
+	test();
 }

@@ -9,8 +9,6 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		typename std::deque<T>::iterator begin();
-		typename std::deque<T>::iterator end();
 		~MutantStack();
 		class iterator
 		{
@@ -29,16 +27,18 @@ class MutantStack : public std::stack<T>
 				T 		 operator*();
 				~iterator();
 		};
+		iterator begin();
+		iterator end();
 };
 
 template <typename T>
-typename std::deque<T>::iterator MutantStack<T>::begin(){
-	return this->c.begin();
+typename MutantStack<T>::iterator MutantStack<T>::begin(){
+	return MutantStack::iterator(this->c.begin());
 }
 
 template <typename T>
-typename std::deque<T>::iterator MutantStack<T>::end(){
-	return this->c.end();
+typename MutantStack<T>::iterator MutantStack<T>::end(){
+	return MutantStack::iterator(this->c.end());
 }
 
 template <typename T>
@@ -60,12 +60,6 @@ template <typename T>
 typename MutantStack<T>::iterator &MutantStack<T>::iterator::operator=(const MutantStack<T>::iterator &source) {
 	if (this != &source)
 		iter = source.iter;
-	return *this;
-}
-
-template <typename T>
-typename MutantStack<T>::iterator &MutantStack<T>::iterator::operator=(const typename std::deque<T>::iterator &source){
-	iter = source;
 	return *this;
 }
 
