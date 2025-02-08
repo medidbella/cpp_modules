@@ -11,6 +11,32 @@ void randInit(iterator begin, iterator end, int rang)
 	}	
 }
 
+void test5()
+{
+	Span test(10);
+	test.addNumber(10);
+	// test.addNumber(10);
+	try{
+		std::cout << test.longestSpan() << '\n';
+	}
+	catch(Span::CalculationFailedException &ex){
+		std::cout << ex.what() << '\n';
+	}
+}
+
+void test4()
+{
+	Span test(2);
+	std::vector<int> vec(3, 3);
+	try {
+		test.addRange(vec.begin(), vec.end());
+	}
+	catch (Span::FullSpanException &ex)
+	{
+		std::cout << ex.what()<< '\n' ;
+	}
+}
+
 void test3()
 {
 	const int size = 10000;
@@ -50,5 +76,5 @@ void test1()
 
 int main()
 {
-	test3();
+	test5();
 }

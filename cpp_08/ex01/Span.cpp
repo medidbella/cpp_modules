@@ -20,7 +20,7 @@ Span::Span(unsigned int initSize)
 void Span::addNumber(int newNum)
 {
 	if (emptyBlocks < 1)
-		throw 1; //throw proper exception later
+		throw Span::FullSpanException();
 	emptyBlocks -= 1;
 	Numbers.push_back(newNum);
 	std::sort(Numbers.begin(), Numbers.end());
@@ -47,7 +47,7 @@ Span &Span::operator=(const Span &source)
 int Span::shortestSpan() const
 {
 	if (Numbers.size() < 2)
-		throw 1;//throw ....
+		throw Span::CalculationFailedException(ONE_ELEMENT_ERROR);
 	std::vector<int> copy(Numbers.begin() + 1, Numbers.end());
 	std::vector<int> diffs(copy.size());
 	std::transform(copy.begin(), copy.end(), Numbers.begin(), diffs.begin(), get_span);
@@ -55,18 +55,47 @@ int Span::shortestSpan() const
 	for (int i = 0; (unsigned)i < diffs.size(); i++)
 		if (diffs[i] > 0)
 			return diffs[i];
-	throw 1;//....
+	throw Span::CalculationFailedException(REPEATED_ELEMENTS_ERROR);
 }
 
 int Span::longestSpan() const
 {
 	if (Numbers.size() < 2)
-		throw 1;//...
+		throw Span::CalculationFailedException(ONE_ELEMENT_ERROR);
 	if (Numbers[0] == Numbers[Numbers.size() - 1])
-		throw 1;//...
-	return (abs(Numbers[Numbers.size() - 1] - Numbers[0]));
-	
+		throw Span::CalculationFailedException(REPEATED_ELEMENTS_ERROR);
+	return (abs(Numbers[Numbers.size() - 1] - Numbers[0]));	
 }
+
+Span::FullSpanException::FullSpanException(){
+	err = "attempt to add an element to a full span";
+}
+
+Span::FullSpanException::~FullSpanException() throw(){}
+
+const char *Span::FullSpanException::what() const throw()
+{
+	return err.c_str();
+}
+
+Span::CalculationFailedException::CalculationFailedException(){
+	err = "can't calculate the span";
+}
+
+Span::CalculationFailedException::CalculationFailedException(int errorFlag){
+	if (errorFlag == ONE_ELEMENT_ERROR)
+		err = "can't calculate the span : only one number in the span";
+	else if (errorFlag == REPEATED_ELEMENTS_ERROR)
+		err = "can't calculate the span : the span has one repeated number";
+	else
+		err = "can't calculate the span";
+}
+
+const char *Span::CalculationFailedException::what() const throw(){
+	return err.c_str();
+}
+
+Span::CalculationFailedException::~CalculationFailedException() throw() {}
 
 Span::~Span(){
 	std::cout << "Span destructor used\n";
