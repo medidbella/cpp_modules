@@ -48,9 +48,8 @@ int Span::shortestSpan() const
 {
 	if (Numbers.size() < 2)
 		throw Span::CalculationFailedException(ONE_ELEMENT_ERROR);
-	std::vector<int> copy(Numbers.begin() + 1, Numbers.end());
-	std::vector<int> diffs(copy.size());
-	std::transform(copy.begin(), copy.end(), Numbers.begin(), diffs.begin(), get_span);
+	std::vector<int> diffs(Numbers.size() - 1);
+	std::transform(Numbers.begin() + 1, Numbers.end(), Numbers.begin(), diffs.begin(), get_span);
 	std::sort(diffs.begin(), diffs.end());
 	for (int i = 0; (unsigned)i < diffs.size(); i++)
 		if (diffs[i] > 0)
