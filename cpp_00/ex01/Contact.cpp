@@ -38,7 +38,7 @@ int	Contact::set_members(void)
 {
 	std::string temp[5];
 	std::string msgs[5] = {"first name : ", "last name : ", "nickname : ",
-						"phone number : ", "darckest secret : "};
+						"phone number : ", "darkest secret : "};
 
 	std::cout << "\nEnter the new contact informations \n\n";
 	for (int i = 0; i < 5; i++)
@@ -56,7 +56,7 @@ int	Contact::set_members(void)
 	last_name = temp[1];
 	nickname = temp[2];
 	phone_number = temp[3];
-	darckest_secret = temp[4];
+	darkest_secret = temp[4];
 	std::cout << "new contact added !\n";
 	return (0);
 }
@@ -67,7 +67,7 @@ void Contact::display(void)
 	std::cout << "last_name = " << last_name  + "\n";
 	std::cout << "nickname = " << nickname  + "\n";
 	std::cout << "phone_number = " << phone_number  + "\n";
-	std::cout << "darckest_secret = " << darckest_secret  + "\n";
+	std::cout << "darkest_secret = " << darkest_secret  + "\n";
 }
 
 void Contact::print_row(int i)

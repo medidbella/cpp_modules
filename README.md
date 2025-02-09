@@ -36,4 +36,8 @@
 
 => MODULE 08:
 
-	some of the standard library algorithm, containers, and iterators.  
+	std::algorithm, std::containers, and iterators.
+
+=> MODULE 09:
+
+	

@@ -8,7 +8,7 @@ class Contact{
 		std::string last_name;
 		std::string nickname;
 		std::string	phone_number;
-		std::string darckest_secret;
+		std::string darkest_secret;
 
 	public:
 		int		set_members();
