@@ -58,19 +58,4 @@ std::ostream &operator<<(std::ostream &stream, const Date &data)
 	return stream;
 }
 
-Date extractDate(std::string line)
-{
-	std::stringstream ss(line.c_str());
-	int time[3];
-
-	for (int i = 0; i < 3; i++)
-	{
-		std::getline(ss, line, '-');
-		time[i] = std::atoi(line.c_str());
-	}
-	return Date(time[2], time[1], time[0]);
-}
-
-
-
 Date::~Date(){}

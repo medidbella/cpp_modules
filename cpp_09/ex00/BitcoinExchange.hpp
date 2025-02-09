@@ -1,8 +1,8 @@
 #ifndef BITCOIN_EXCHANGE_HPP
 #define BITCOIN_EXCHANGE_HPP
 
-#include <string>
 #include "Date.hpp"
+#include <string>
 #include <map>
 #include <algorithm>
 #include <fstream>
@@ -19,6 +19,7 @@ class BitcoinExchange
 		BitcoinExchange(const std::string &DataBasePath);
 		BitcoinExchange(const BitcoinExchange &source);
 		BitcoinExchange &operator=(const BitcoinExchange &source);
+		void printAmountPrice(const std::string &inputLine) const;
 		~BitcoinExchange();
 		void printData()
 		{
@@ -31,12 +32,22 @@ class BitcoinExchange
 			}
 		}
 
-	class InvalidDBPath : public std::exception
+	class InvalidDBPathException : public std::exception
 	{
 		public:
-			InvalidDBPath();
-			const char *what()const throw(); 
-			~InvalidDBPath() throw();
+			InvalidDBPathException();
+			const char *what()const throw();
+			~InvalidDBPathException() throw();
+	};
+
+	class InvalidInputException : public std::exception
+	{
+		private:
+			std::string errorMsg;
+		public:
+			InvalidInputException(const std::string &error);
+			const char *what()const throw();
+			~InvalidInputException() throw();
 	};
 };
 
