@@ -19,7 +19,7 @@ class BitcoinExchange
 		BitcoinExchange(const std::string &DataBasePath);
 		BitcoinExchange(const BitcoinExchange &source);
 		BitcoinExchange &operator=(const BitcoinExchange &source);
-		void printAmountPrice(const std::string &inputLine) const;
+		void printAmountPrice(const std::string &inputLine);
 		~BitcoinExchange();
 		void printData()
 		{

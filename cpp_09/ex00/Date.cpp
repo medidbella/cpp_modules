@@ -25,11 +25,11 @@ Date &Date::operator=(const Date &source){
 }
 
 bool Date::operator<(const Date &source) const{
-	if (year != source.year)
-		return year < source.year;
-	else if (month != source.month)
-		return month < source.month;
-	return day < source.day;
+	if (year != source.getYear())
+		return year < source.getYear();
+	else if (month != source.getMonth())
+		return month < source.getMonth();
+	return day < source.getDay();
 }
 
 int Date::getDay() const{
