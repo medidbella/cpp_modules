@@ -34,22 +34,34 @@ void inputParser(std::vector<int> &vec, std::string input)
 	}
 }
 
-void mergeToVector(std::vector<int> &main, std::vector<int> &left, std::vector<int> &right)
+void mergeToVector(std::vector<int> &mainVec, std::vector<int> &left, std::vector<int> &right)
 {
 	unsigned int m = 0, r = 0, l = 0;
 
-	while (m < main.size() && r < right.size() && l < left.size())
+	while (m < mainVec.size() && r < right.size() && l < left.size())
 	{
 		if (left[l] < right[r])
-			main[m] = left[l++];
+			mainVec[m] = left[l++];
 		else
-			main[m] = right[r++];
+			mainVec[m] = right[r++];
 		m++;
 	}
 	while (r < right.size())
-		main[m++] = right[r];
-	while (r < right.size())
-		main[m++] = right[r];
+		mainVec[m++] = right[r++];
+	while (l < left.size())
+		mainVec[m++] = left[l++];
+}
+
+void initParts(std::vector<int> &largeNbs, std::vector<int> &smallNbs,
+	std::vector< std::pair<int, int> > &pairs)
+{
+	int iter = 0;
+	for (unsigned int i = 0; i < pairs.size(); i++)
+	{
+		largeNbs[i] = pairs[iter].second;
+		smallNbs[i] = pairs[iter].first;
+		iter++;
+	}
 }
 
 void recursiveSort(std::vector<int> &vec)
@@ -57,12 +69,27 @@ void recursiveSort(std::vector<int> &vec)
 	if (vec.size() == 1)
 		return ;
 	int size = vec.size();
-	std::vector<int>::iterator it = vec.begin();
-	std::vector<int> leftHalf(it, it + size / 2);
-	std::vector<int> rightHalf(it + size / 2, vec.end());
-	recursiveSort(leftHalf);
-	recursiveSort(rightHalf);
-	mergeToVector(vec, leftHalf, rightHalf);
+	std::vector< std::pair<int, int> > pairs(vec.size() / 2);
+	int iter = 0;
+	for (unsigned int i = 0; i < vec.size() / 2; i++)
+	{
+		pairs[i].first = vec[iter++];
+		pairs[i].second = vec[iter++];
+	}
+	for (unsigned int i = 0; i < pairs.size(); i++)
+		if (pairs[i].first > pairs[i].second)
+			std::swap(pairs[i].first, pairs[i].second);
+	std::vector<int> smallPart(size / 2);
+	std::vector<int> largePart(size / 2);
+	initParts(largePart, smallPart, pairs);
+	recursiveSort(largePart);
+	recursiveSort(smallPart);
+	mergeToVector(vec, largePart, smallPart);
+}
+
+void binarySearchInset(int element, std::vector<int> &vec, unsigned int start, unsigned int end)
+{
+
 }
 
 void mergerInsertionSort(std::vector<int> &input)
@@ -87,5 +114,10 @@ void mergerInsertionSort(std::vector<int> &input)
 		smallPairNumbers[i] = pairs[i].first;
 		largePairNumbers[i] = pairs[i].second;
 	}
+	for (unsigned int i =0 ; i < largePairNumbers.size(); i++)
+		std::cout << largePairNumbers[i] << ' ';
+	std::cout << '\n';
 	recursiveSort(largePairNumbers);
+//insert losers into winners
+
 }
