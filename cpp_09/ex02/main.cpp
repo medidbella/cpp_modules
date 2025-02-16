@@ -6,19 +6,17 @@ int main(int Argc, char **Argv)
 		std::cerr << "usage: " << Argv[0] << " <numbers>\n";
 		return 1;
 	}
-	std::size_t t0 = getCurrentTime();
-	std::vector<int> vec(Argc - 1);
+	std::vector<int> container1;
+	std::deque<int> container2;
+	std::size_t vector_time;
+	std::size_t deque_time;
 	try{
-		inputParser(vec, Argv+1);
+		vector_time = SortingMonitor(container1, Argv + 1);
+		deque_time =  SortingMonitor(container2, Argv + 1);
 	}
 	catch(std::exception &Error){
 		std::cerr << Error.what() << "\n";
 		return 1;
 	}
-	mergerInsertionSort(vec);
-	std::size_t t1 = getCurrentTime();
-	for (unsigned int i =0 ; i < vec.size(); i++)
-		std::cout << vec[i] << ' ';
-	std::cout << '\n';
-	std::cout << "time to process " << Argc -1 << " elements using std::vector : " << t1 - t0 << "ms\n";
+	displayResults(container2, deque_time, vector_time, Argv + 1);
 }
