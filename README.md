@@ -36,8 +36,8 @@
 
 => MODULE 08:
 
-	std::algorithm, std::containers, and iterators.
+	std::algorithm, some containers, and iterators.
 
 => MODULE 09:
 
-	
+	std::map, std::vector, std::stack, std::deque ...
