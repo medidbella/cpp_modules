@@ -189,21 +189,17 @@ void displayResults(std::deque<int> &sorted, size_t &deque_time,
 		std::cout << unsorted_input[i] << " ";
 		if (i == 4){
 			std::cout << "[...]";
-			break;
-		}
+			break;}
 	}
-	std::cout << '\n';
-	std::cout << "After:  ";
+	std::cout << "\nAfter:  ";
 	for (unsigned int i = 0;i < sorted.size() ;i++)
 	{
 		std::cout << unsorted_input[i] << " ";
 		if (i == 4){
 			std::cout << "[...]";
-			break;
-		}
+			break;}
 	}
-	std::cout << '\n';
-	std::cout << "Time to process a range of " << sorted.size()
+	std::cout << "\nTime to process a range of " << sorted.size()
 		<< " elements with std::vector : " << vector_time / 1000
 			<< '.' << vector_time % 1000 << "\n";
 	std::cout << "Time to process a range of " << sorted.size()

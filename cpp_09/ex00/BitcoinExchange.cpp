@@ -33,8 +33,8 @@ Date getDate(std::string line, char separator)
 
 float getPrice(std::string line, char separator)
 {
-	(void) line;
 	float result  = 0;
+	bool decimalPoint = false;
 	std::stringstream ss(line.c_str());
 	std::getline(ss, line, separator);
 	std::getline(ss, line, separator);
@@ -44,11 +44,13 @@ float getPrice(std::string line, char separator)
 	while (i < line.length())
 	{
 		if ((!std::isdigit(line[i]) && line[i] != '.' && !std::isspace(line[i]))
-			|| (line[i] == '.' && (i == 0 || i == line.size() - 1)))
+			|| (line[i] == '.' && (i == 0 || decimalPoint || i == line.size() - 1)))
 		{
 			throw BitcoinExchange::InvalidInputException("bad value syntax => " + line);
 			break ;
 		}
+		if (line[i] == '.')
+			decimalPoint = true;
 		i++;
 	}
 	std::stringstream floatStream(line.c_str());
@@ -92,15 +94,15 @@ void BitcoinExchange::printAmountPrice(const std::string &inputLine)
 	amount = getPrice(inputLine, '|');
 	if (paymentDate < PriceDataBase.begin()->first)
 		throw BitcoinExchange::InvalidInputException("payment date too old => " + inputLine);
+	if (amount > 1000)
+		throw BitcoinExchange::InvalidInputException("too large BTC amount , amount range = <0, 1000>");
+	else if (amount < 0)
+		throw BitcoinExchange::InvalidInputException("not a positive BTC amount");
 	else if (lastElement->first < paymentDate){
 		std::cout << paymentDate << " => " << amount << " = "
 			<< lastElement->second * amount << '\n';
 		return ;
 	}
-	if (amount > 1000)
-		throw BitcoinExchange::InvalidInputException("too large BTC amount , amount range = <0, 1000>");
-	else if (amount < 0)
-		throw BitcoinExchange::InvalidInputException("not a positive BTC amount");
 	initialDate = paymentDate;
 	while (PriceDataBase.find(paymentDate) == PriceDataBase.end())
 		--paymentDate;
