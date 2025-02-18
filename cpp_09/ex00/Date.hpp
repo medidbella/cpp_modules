@@ -25,6 +25,5 @@ class Date
 		~Date();
 };
 
-Date extractDate(std::string line);
 std::ostream &operator<<(std::ostream &stream, const Date &data);
 #endif

@@ -21,16 +21,6 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange &source);
 		void printAmountPrice(const std::string &inputLine);
 		~BitcoinExchange();
-		void printData()
-		{
-			std::map<Date, float>::iterator it = PriceDataBase.begin();
-			for (unsigned int i = 0; i < PriceDataBase.size();i++)
-			{
-				if (i != 0)
-					std::cout << it->first << "\t|\t" << it->second << '\n';
-				it++;
-			}
-		}
 
 	class InvalidDBPathException : public std::exception
 	{
